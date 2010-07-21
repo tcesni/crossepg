@@ -1,0 +1,13 @@
+=== CSV Fields ===
+
+COLUMN => VALUE
+ # => organization id
+ # => transport service id
+ # => service id
+ # => start time (unix timestamp)
+ # => length (seconds)
+ # => event title
+ # => event description
+ # => country code (optional)
+
+country code is a 3 char code... like "eng" or "ita"
