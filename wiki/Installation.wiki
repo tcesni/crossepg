@@ -1,0 +1,58 @@
+=== DGS installation ===
+ 
+1. Copy the package in your box (/tmp directory).
+2. From telnet type:
+
+{{{
+tar zxf crossepg-(VERSION)-dgs-sh4.tar.gz -C /tmp
+cd /tmp
+./installer.sh
+}}}
+ 
+=== Enigma2 installation (common) ===
+ 
+1. Copy the package in your box.
+2. From telnet type:
+
+{{{
+ipkg install crossepg_enigma2-(VERSION)_(ARCHITECTURE).ipk}
+}}}
+ 
+3. Reboot enigma2 GUI.
+
+*If you have an image with a compatible epg patch skip the next steps (installation finished)*
+ 
+=== Enigma2 installation (ipbox cuberevo) ===
+
+with a unix compatible editor edit the file /etc/init.d/rcS and before the line
+ 
+{{{
+/usr/local/bin/enigma2
+}}}
+ 
+add this line
+
+{{{ 
+/var/crossepg/crossepg_epgmove.sh
+ }}}
+
+_Example:_
+{{{ 
+echo "starting e2->"
+/var/crossepg/crossepg_epgmove.sh
+/usr/local/bin/enigma2 
+}}}
+
+=== Enigma2 installation (dreambox) ===
+ 
+with a unix compatible editor edit the file /usr/bin/enigma2.sh and before the line
+
+{{{ 
+LD_PRELOAD=/usr/lib/libopen.so.0.0 /usr/bin/enigma2
+}}}
+
+add this line
+
+{{{ 
+/usr/crossepg/crossepg_epgmove.sh
+}}}
