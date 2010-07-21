@@ -1,5 +1,3 @@
-=== CSV Fields ===
-
 COLUMN => VALUE
  # => organization id
  # => transport service id
