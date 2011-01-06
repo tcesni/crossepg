@@ -7,4 +7,6 @@ The goal is to merge Ambrosa E2_LOADEPG [http://www.ambrosa.net] with CrossEPG.
 
 = Details =
 
+*WORK IN PROGRESS*
+
 CrossEPG export some internal function to Python. For convenience I've made a python lib _crossepg/script/lib/scriptlib.py_
