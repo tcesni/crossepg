@@ -1,6 +1,6 @@
 #summary HowTo make your own script
 = Introduction =
-CrossEPG can run Python scripts during provider download process. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing, simple print "Hello World") and much more
+CrossEPG can run scripts during provider download process. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing, simple print "Hello World") and much more
 
 Scripts can be anything: shell code, binary, Python code ..... 
 
