@@ -1,4 +1,5 @@
 #summary HowTo make your own script
+#labels Featured
 = Introduction =
 CrossEPG can run scripts during provider download process. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing, simple print "Hello World") and much more
 
