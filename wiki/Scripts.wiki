@@ -91,4 +91,21 @@ These are some function and class. View inside _scriptlib.py_ for details:
  * def delta_utc() : return localtime - utctime difference
  * def delta_dst() : return DST time difference
  * class lamedb_class : parse lamedb and load into an array
- * class crossepg_db_class : aggregate sone CrossEPG function and make easy to access them
+ * class crossepg_db_class : aggregate some CrossEPG functions and make easy to access them
+
+==EXECUTING AND DEBUGGING YOUR SCRIPT==
+crossepg library and scriptlib library can work outside Enigma2 so you can run your script by hand for debugging purpose
+{{{
+# go into your script directory
+cd /var/crossepg/scripts/rai/
+# and run it
+./rai.py
+}}}
+and see what happen
+
+Or use the more complex way with _crossepg_downloader_ binary and also test it as a real provider
+{{{
+cd /var/crossepg
+# run script provider. it's the crossepg/provider/script_name.conf without '.conf'
+./crossepg_downloader -p rai_script
+}}}
