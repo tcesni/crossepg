@@ -1,8 +1,10 @@
 #summary HowTo make your own script
 = Introduction =
-*This CrossPEG capability works ONLY in Enigma2 Set-Top-Box (i.e. Dreambox 7025, 800, 8000 ..., DuoLabs QboxHD, QBoxMINI, ...). It cannot work with old Enigma1 STB because they lack Python interpreter*
+*This CrossPEG capability works ONLY in Enigma2 Set-Top-Box (i.e. Dreambox 7025, 800, 8000 ..., DuoLabs QboxHD, QBoxMINI, ...)
 
-CrossEPG can run Python scripts during provider download. Scripts can download complex data (i.e. download epg from a website, parse HTML code and inject data into CrossEPG internal  database), do some task (i.e. do epg data aliasing) and much more
+It cannot work with old Enigma1 STB because they lack Python interpreter*
+
+CrossEPG can run Python scripts during provider download. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing) and much more
 
 The goal is to merge Ambrosa E2_LOADEPG http://www.ambrosa.net with CrossEPG
 
@@ -12,14 +14,16 @@ The goal is to merge Ambrosa E2_LOADEPG http://www.ambrosa.net with CrossEPG
 *THIS DOCUMENT IS A WORK IN PROGRESS*
 
 ==BASICS==
-Creating a script require some steps.
+Creating a script require some steps
 
 1)
-Make your Python script. The script must be places under _crossepg/scripts/_ directory.
-It's better if you create a subdir under _crossepg/scripts/_ . Your script can import some CrossEPG functions (see below) and/or can import some _scriptlib_ function (see below)
+Make your Python script. The script must be placed under _crossepg/scripts/_ directory
+It's better if you create a subdir under _crossepg/scripts/_ 
+
+Your script can import some CrossEPG functions (see below) and/or can import some _scriptlib_ function (see below)
 
 2)
-Add your script as a new "script provider". You must create a text file _your_script.conf_ and place into _crossepg/providers/_ dir.
+Add your script as a new "script provider". You must create a text file _your_script.conf_ and place into _crossepg/providers/_
 {{{
 protocol=script
 filename=YOURSCRIPT_RELATIVE_PATH.PY
@@ -46,9 +50,9 @@ CrossEPG exports some internal functions. These functions can be imported and us
 import crossepg
 }}}
 
-You can find the full list of exported function into _/usr/lib/python/crossepg.py_ . This path can change because STB devices use different operating system filesystem layout.
+You can find the exported functions full list into _/usr/lib/python/crossepg.py_ . This path can change because STB devices use different filesystem layout
 
-In QboxHD and QboxMINI device, the path is _/usr/local/lib/python2.6/crossepg.py_
+In QboxHD and QboxMINI device the path is _/usr/local/lib/python2.6/crossepg.py_
 
 The main useful functions are:
   * crossepg.epgdb_get_installroot() : the path to main CrossEPG installation dir
@@ -62,8 +66,9 @@ The main useful functions are:
 You can find examples inside _crossepg/scripts/example_script.py_ and _crossepg/scripts/test.py_ . View other examples into SCRIPTLIB (see below), RAI script, ALIAS script.
 
 ==SCRIPTLIB LIBRARY==
-For your convenience I've made a Python lib _crossepg/scripts/lib/scriptlib.py_ that simplify the access to some CrossEPG native function and add other useful function.
-Because _scriptlib.py_ path is not known by Python, it is required to add the _scripts/lib_ path to PATH environment var.
+For your convenience I've made a Python lib _crossepg/scripts/lib/scriptlib.py_ that simplify the access to some CrossEPG native function and add other useful functions
+
+Because _scriptlib.py_ path is not known by Python, it's required to add the _scripts/lib_ path to the environment PATH var
 {{{
 import os
 import sys
@@ -81,9 +86,9 @@ import scriptlib
 
 Under _scripts/lib/_ I've added other generic Python module, i.e. _markupbase.py_ and _sgmllib.py_ (very useful for parsing HTML data) because some STB have not in their standard Python tree.
 
-Because _scripts/lib_ is added into PATH as last item, if the module exists in your standard Python tree, it will be used. If not, will be loaded the module under _scripts/libs/_ 
+Because _scripts/lib_ is added into PATH as last item, if the module exists in your standard Python tree, it will be used. If not, it will be loaded from _scripts/libs/_ 
 
-These are some function and class. View inside _scriptlib.py_ for details:
+These are some functions and classes. View inside _scriptlib.py_ for details:
 
  * def fn_escape() : remove strange chars from filename converting into `_` (underscore)
  * class logging_class : logging facility
@@ -91,7 +96,7 @@ These are some function and class. View inside _scriptlib.py_ for details:
  * def delta_utc() : return localtime - utctime difference
  * def delta_dst() : return DST time difference
  * class lamedb_class : parse lamedb and load into an array
- * class crossepg_db_class : aggregate some CrossEPG functions and make easy to access them
+ * class crossepg_db_class : aggregate some CrossEPG functions and make easy to access to CrossEPG internal database
 
 ==EXECUTING AND DEBUGGING YOUR SCRIPT==
 crossepg library and scriptlib library can work outside Enigma2 so you can run your script by hand for debugging purpose
