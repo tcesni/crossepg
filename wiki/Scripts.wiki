@@ -1,9 +1,9 @@
 #summary HowTo make your own script
 = Introduction =
 
-CrossEPG can run Python scripts during provider download. Scripts can download complex data (i.e. download epg from a website, parse HTML code and inject data into CrossEPG internal  database), do some task (i.e. do epg data aliasing) and much more.
+CrossEPG can run Python scripts during provider download. Scripts can download complex data (i.e. download epg from a website, parse HTML code and inject data into CrossEPG internal  database), do some task (i.e. do epg data aliasing) and much more
 
-The goal is to merge Ambrosa E2_LOADEPG [http://www.ambrosa.net] with CrossEPG.
+The goal is to merge Ambrosa E2_LOADEPG http://www.ambrosa.net with CrossEPG
 
 
 = Details =
@@ -40,7 +40,7 @@ description=Italy RAI website (see scripts/rai/rai.conf)
 }}}
 
 ==CROSSEPG LIBRARY==
-CrossEPG exports some internal functions. These functions can be imported and used in your Python script.
+CrossEPG exports some internal functions. These functions can be imported and used in your Python script
 {{{
 import crossepg
 }}}
@@ -55,7 +55,7 @@ The main useful functions are:
   * crossepg.epgdb_open(dbroot) : open CrossEPG database located under _dbroot_ path
   * crossepg.epgdb_close() : close CrossEPG database
   * crossepg.log_open(dbroot) : open _crossepg.log_ file located under _dbroot_
-  * crossepg.log_add("text") : print a log messages to STDOUT and, if previous opened, into main _crossepg.log_ file
+  * crossepg.log_add("text") : print a log messages to STDOUT and, if previously opened, add to main _crossepg.log_ file
   * and much more ....
 
 You can find examples inside _crossepg/scripts/example_script.py_ and _crossepg/scripts/test.py_ . View other examples into SCRIPTLIB (see below), RAI script, ALIAS script.
@@ -65,6 +65,7 @@ For your convenience I've made a Python lib _crossepg/scripts/lib/scriptlib.py_ 
 Because _scriptlib.py_ path is not known by Python, it is required to add the _scripts/lib_ path to PATH environment var.
 {{{
 import os
+import sys
 import crossepg
 # location of local Python modules under "scripts/lib" and add it to sys.path()
 crossepg_instroot = crossepg.epgdb_get_installroot()
@@ -80,3 +81,13 @@ import scriptlib
 Under _scripts/lib/_ I've added other generic Python module, i.e. _markupbase.py_ and _sgmllib.py_ (very useful for parsing HTML data) because some STB have not in their standard Python tree.
 
 Because _scripts/lib_ is added into PATH as last item, if the module exists in your standard Python tree, it will be used. If not, will be loaded the module under _scripts_libs/_ 
+
+These are some function and class. View inside scriptlib.py for details:
+
+ * def fn_escape() : remove strange chars from filename converting into _
+ * class logging_class : logging facility
+ * class zlib_class : uncompress gzipped file using gzip command
+ * def delta_utc() : return localtime - utctime difference
+ * def delta_dst() : return DST time difference
+ * class lamedb_class : parse lamedb and load into an array
+ * class crossepg_db_class : aggregate sone CrossEPG function and make easy to access them
