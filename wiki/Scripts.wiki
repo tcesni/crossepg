@@ -1,8 +1,8 @@
 #summary HowTo make your own script
 = Introduction =
-*This CrossPEG capability works ONLY in Enigma2 Set-Top-Box (i.e. Dreambox 7025, 800, 8000 ..., DuoLabs QboxHD, QBoxMINI, ...)
+*This CrossPEG capability works ONLY in Enigma2 Set-Top-Box (i.e. Dreambox 7025, 800, 8000 ..., DuoLabs QboxHD, QBoxMINI, ...)*
 
-It cannot work with old Enigma1 STB because they lack Python interpreter*
+*It cannot work with Enigma1 STB because they lack Python interpreter*
 
 CrossEPG can run Python scripts during provider download. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing) and much more
 
