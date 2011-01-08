@@ -109,3 +109,40 @@ cd /var/crossepg
 # run script provider. it's the crossepg/provider/script_name.conf without '.conf'
 ./crossepg_downloader -p rai_script
 }}}
+When your script is working fine, you can add it as a download provider using CrossEPG Config Menu plugin.
+
+Your script is a download provider and it will be executed as a provider but it can download nothing and do nothing. It can do some tasks (i.e. simple print "Hello world !") without accessing to CrossEPG database or accessing to anything else.
+
+Providers execution order can be easy selected using CrossEPG Config Menu plugin (since svn 196) so user can choose if it's better that your script should be run BEFORE or AFTER other provider.
+
+== LOGGING FACILITY==
+Log is made easy using _scriptlib_
+
+
+{{{
+import os
+import sys
+import crossepg
+# location of local Python modules under "scripts/lib" and add it to sys.path()
+crossepg_instroot = crossepg.epgdb_get_installroot()
+if crossepg_instroot == False:
+	sys.exit(1)
+libdir = os.path.join(crossepg_instroot , 'scripts/lib')
+sys.path.append(libdir)
+
+# import scriptlib module
+import scriptlib
+
+lg = scriptlib.logging_class()
+
+# write text to stdout and crossepg.log
+lg.log("text")
+}}}
+During download you can watch in your TV a small 2 rows windows (into lower right corner). You can write into this window. The upper row is used for the script name showing "Executing script *your_text*"
+{{{
+lg.log2video_scriptname("your_text")
+}}}
+The lower row is for writing status messages during script execution
+{{{
+lg.log2video_status("your_status_text")
+}}}
