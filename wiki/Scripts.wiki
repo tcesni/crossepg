@@ -138,7 +138,9 @@ lg = scriptlib.logging_class()
 # write text to stdout and crossepg.log
 lg.log("text")
 }}}
-During download you can watch in your TV a small 2 rows windows (into lower right corner). You can write into this window. The upper row is used for the script name showing "Executing script *your_text*"
+During download you can watch in your TV a small 2 rows windows (into lower right corner). You can write text messages into this window.
+
+The upper row is used for the script name showing "Executing script *your_text*"
 {{{
 lg.log2video_scriptname("your_text")
 }}}
