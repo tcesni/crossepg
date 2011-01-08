@@ -81,11 +81,11 @@ import scriptlib
 
 Under _scripts/lib/_ I've added other generic Python module, i.e. _markupbase.py_ and _sgmllib.py_ (very useful for parsing HTML data) because some STB have not in their standard Python tree.
 
-Because _scripts/lib_ is added into PATH as last item, if the module exists in your standard Python tree, it will be used. If not, will be loaded the module under _scripts_libs/_ 
+Because _scripts/lib_ is added into PATH as last item, if the module exists in your standard Python tree, it will be used. If not, will be loaded the module under _scripts/libs/_ 
 
-These are some function and class. View inside scriptlib.py for details:
+These are some function and class. View inside _scriptlib.py_ for details:
 
- * def fn_escape() : remove strange chars from filename converting into _
+ * def fn_escape() : remove strange chars from filename converting into `_` (underscore)
  * class logging_class : logging facility
  * class zlib_class : uncompress gzipped file using gzip command
  * def delta_utc() : return localtime - utctime difference
