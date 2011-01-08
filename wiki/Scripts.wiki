@@ -1,13 +1,14 @@
 #summary HowTo make your own script
 = Introduction =
-*This CrossPEG capability works ONLY in Enigma2 Set-Top-Box (i.e. Dreambox 7025, 800, 8000 ..., DuoLabs QboxHD, QBoxMINI, ...)*
+CrossEPG can run Python scripts during provider download process. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing, simple print "Hello World") and much more
 
-*It cannot work with Enigma1 STB because they lack Python interpreter*
+Scripts can be anything: shell code, binary, Python code ..... 
 
-CrossEPG can run Python scripts during provider download. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing) and much more
+Only using Python code you can access to CrossEPG API and access to its functions. Obviously Python code works ONLY with Enigma2 Set-Top-Box (i.e. Dreambox 7025, 800, 8000 ..., DuoLabs QboxHD, QBoxMINI, ...)
 
 The goal is to merge Ambrosa E2_LOADEPG http://www.ambrosa.net with CrossEPG
 
+This document is focused to describe how to develop Python scripts but some item are the same for other script type (see BASICS below)
 
 = Details =
 
