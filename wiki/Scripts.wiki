@@ -1,7 +1,7 @@
-#summary HowTo make your own script
+#summary How to make your own CrossEPG script
 #labels Featured
 = Introduction =
-CrossEPG can run scripts during provider download process. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing, simple print "Hello World") and much more
+CrossEPG can run scripts during provider download process. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing, simple print "Hello World") and much more.
 
 Scripts can be anything: shell code, binary, Python code ..... 
 
@@ -25,7 +25,13 @@ It's better if you create a subdir under _crossepg/scripts/_
 Your script can import some CrossEPG functions (see below) and/or can import some _scriptlib_ function (see below)
 
 2)
-Add your script as a new "script provider". You must create a text file _your_script.conf_ and place into _crossepg/providers/_
+Add your script as a new "script provider". You must create a 3 lines text file _your_script.conf_ and place into _crossepg/providers/_
+
+The first line is *protocol=script*
+
+The second line is *filename=* follow by script path relative to _crossepg/scripts/_
+
+The third line is *description=* follow by a text message that will be show in OSD
 {{{
 protocol=script
 filename=YOURSCRIPT_RELATIVE_PATH.PY
@@ -70,7 +76,7 @@ You can find examples inside _crossepg/scripts/example_script.py_ and _crossepg/
 ==SCRIPTLIB LIBRARY==
 For your convenience I've made a Python lib _crossepg/scripts/lib/scriptlib.py_ that simplify the access to some CrossEPG native function and add other useful functions
 
-Because _scriptlib.py_ path is not known by Python, it's required to add the _scripts/lib_ path to the environment PATH var
+Because _scriptlib.py_ path is not known by Python, it's required to add the full _scripts/lib_ path to the environment var PATH before "import" it
 {{{
 import os
 import sys
@@ -88,7 +94,9 @@ import scriptlib
 
 Under _scripts/lib/_ I've added other generic Python module, i.e. _markupbase.py_ and _sgmllib.py_ (very useful for parsing HTML data) because some STB have not in their standard Python tree.
 
-Because _scripts/lib_ is added into PATH as last item, if the module exists in your standard Python tree, it will be used. If not, it will be loaded from _scripts/libs/_ 
+Because _scripts/lib_ is added into PATH as last item, if the module exists in your standard Python tree, it will be used. If not, it will be loaded from _scripts/libs/_
+
+_scripts/lib/_ is the right place to put extra libs or some Python standard module not present in every STB (like _sgmllib.py_)
 
 These are some functions and classes. View inside _scriptlib.py_ for details:
 
@@ -110,7 +118,7 @@ cd /var/crossepg/scripts/rai/
 }}}
 and see what happen
 
-Or use the more complex way with _crossepg_downloader_ binary and also test it as a real provider
+Or use the more complex way with _crossepg_downloader_ binary testing it as a real provider (checking _your_script.conf_ )
 {{{
 cd /var/crossepg
 # run script provider. it's the crossepg/provider/script_name.conf without '.conf'
@@ -145,13 +153,13 @@ lg = scriptlib.logging_class()
 # write text to stdout and crossepg.log
 lg.log("text")
 }}}
-During download you can watch in your TV a small 2 rows windows (into lower right corner). You can write text messages into this window.
+During download you can watch in your TV a small window (in lower right corner). You can write text messages into this window.
 
-The upper row is used for the script name showing "Executing script *your_text*"
+The window has 2 rows: the upper row is used for the script name showing "Executing script *my_script_name_text*"
 {{{
-lg.log2video_scriptname("your_text")
+lg.log2video_scriptname("my_script_name_text")
 }}}
-The lower row is for writing status messages during script execution
+The lower row is used for writing status messages during script execution
 {{{
 lg.log2video_status("your_status_text")
 }}}
