@@ -19,8 +19,8 @@ This document is focused to describe how to develop Python scripts but some item
 Creating a script require some steps
 
 1)
-Make your Python script. The script must be placed under _crossepg/scripts/_ directory
-It's better if you create a subdir under _crossepg/scripts/_ 
+Make your Python script. The script must be placed under _crossepg/scripts/_ directory.
+It's better if you create a subdir under _crossepg/scripts/_ and put there your files
 
 Your script can import some CrossEPG functions (see below) and/or can import some _scriptlib_ function (see below)
 
