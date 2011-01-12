@@ -1,6 +1,6 @@
 #summary How to make your own CrossEPG script
 #labels Featured
-= Introduction =
+= INTRODUCTION =
 CrossEPG can run scripts during provider download process. Scripts can download complex data (i.e. download epg data from a website, parse HTML code and then inject data into CrossEPG internal database), do some task (i.e. do epg data aliasing, simple print "Hello World") and much more.
 
 Scripts can be anything: shell code, binary, Python code ..... 
@@ -10,10 +10,6 @@ Only using Python code you can access to CrossEPG API and access to its function
 The goal is to merge Ambrosa E2_LOADEPG http://www.ambrosa.net with CrossEPG
 
 This document is focused to describe how to develop Python scripts but some item are the same for other script type (see BASICS below)
-
-= Details =
-
-*THIS DOCUMENT IS A WORK IN PROGRESS*
 
 ==BASICS==
 Creating a script require some steps
