@@ -6,7 +6,7 @@
 ipkg install crossepg_enigma2-(VERSION)_(ARCHITECTURE).ipk}
 }}}
  
-3. Reboot enigma2 GUI.
+2. Reboot enigma2 GUI.
 
 === Only for enigma2 previous 20110216 ===
  
