@@ -1,17 +1,4 @@
 #labels Featured
-=== DGS installation ===
- 
-1. Copy the package in your box (/tmp directory).
-2. From telnet type:
-
-{{{
-tar zxf crossepg-(VERSION)-dgs-sh4.tar.gz -C /tmp
-cd /tmp
-./installer.sh
-}}}
- 
-=== Enigma2 installation (common) ===
- 
 1. Copy the package in your box.
 2. From telnet type:
 
